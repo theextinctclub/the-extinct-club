@@ -15,6 +15,6 @@ $EXTINCT is a three-pillar Web3 ecosystem built around the revival of extinct sp
 ## Links
 
 - Website: [theextinctclub.com](https://theextinctclub.com)
-- Twitter: [@theextinctclub](https://x.com/theextinctclub)
+- Twitter: [theextinctclub](https://x.com/theextinctclub)
 - Telegram: [t.me/theextinctclub](https://t.me/theextinctclub)
 - Pump.fun: [pump.fun](https://pump.fun/TBA)
