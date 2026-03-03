@@ -1,0 +1,126 @@
+/* ── COUNTDOWN BANNER ── */
+.launch-countdown {
+  position: relative;
+  z-index: 2;
+  margin-top: 3.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  animation: fadein 1.4s 1.2s both;
+}
+
+.countdown-label {
+  font-size: var(--text-xs);
+  letter-spacing: 0.45em;
+  color: var(--green);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.countdown-label::before,
+.countdown-label::after {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 1px;
+  background: var(--green);
+  opacity: 0.5;
+}
+
+/* ── TIMER BLOCKS ── */
+.countdown-timer {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.countdown-unit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.countdown-num {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  line-height: 1;
+  color: var(--amber-light);
+  text-shadow: 0 0 30px rgba(245,166,35,0.5), 0 0 60px rgba(245,166,35,0.15);
+  min-width: 2ch;
+  text-align: center;
+  background: rgba(200,134,10,0.06);
+  border: 1px solid rgba(200,134,10,0.2);
+  padding: 0.5rem 0.8rem;
+  position: relative;
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  transition: text-shadow 0.3s;
+}
+
+.countdown-num.tick {
+  text-shadow: 0 0 40px rgba(245,166,35,0.9), 0 0 80px rgba(245,166,35,0.3);
+  border-color: rgba(200,134,10,0.5);
+}
+
+.countdown-unit-label {
+  font-size: 0.55rem;
+  letter-spacing: 0.3em;
+  color: var(--bone-dim);
+  text-transform: uppercase;
+}
+
+.countdown-sep {
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  color: rgba(200,134,10,0.4);
+  line-height: 1;
+  padding-bottom: 1.6rem;
+  animation: blink 1s ease infinite;
+}
+
+/* ── DATE LINE ── */
+.countdown-date {
+  font-family: var(--font-title);
+  font-size: var(--text-xs);
+  letter-spacing: 0.3em;
+  color: var(--bone-dim);
+  text-transform: uppercase;
+  border-top: 1px solid rgba(200,134,10,0.15);
+  padding-top: 0.8rem;
+  text-align: center;
+}
+
+.countdown-date span {
+  color: var(--amber-glow);
+}
+
+/* ── LAUNCHED STATE ── */
+.countdown-launched {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  color: var(--green);
+  text-shadow: var(--glow-green);
+  letter-spacing: 0.1em;
+  text-align: center;
+  animation: pulse-glow 2s ease infinite;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 600px) {
+  .countdown-timer {
+    gap: 0.3rem;
+  }
+
+  .countdown-num {
+    font-size: clamp(1.6rem, 8vw, 2.2rem);
+    padding: 0.4rem 0.6rem;
+  }
+
+  .countdown-sep {
+    font-size: 1.4rem;
+    padding-bottom: 1.4rem;
+  }
+}

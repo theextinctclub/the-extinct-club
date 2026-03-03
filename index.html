@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="$EXTINCT — They Were Gone. Now They Return. Meme coin launching 04 March 2026 on Pump.fun.">
+  <meta name="theme-color" content="#020908">
+  <meta property="og:title" content="$EXTINCT — They Were Gone. Now They Return.">
+  <meta property="og:description" content="8,888 extinct species. One token. One DNA Lab. Launching 04 March 2026.">
+  <meta property="og:type" content="website">
+  <title>$EXTINCT — They Were Gone. Now They Return.</title>
+  <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="assets/images/favicon-192.png">
+  <meta property="og:image" content="assets/images/extinction_revival.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/hero.css">
+  <link rel="stylesheet" href="css/nft.css">
+  <link rel="stylesheet" href="css/sections.css">
+  <link rel="stylesheet" href="css/countdown.css">
+  <style>
+    /* NAV SOCIAL ICON */
+    .nav-social-link {
+      display:flex; align-items:center; justify-content:center;
+      width:32px; height:32px;
+      color:var(--bone-dim);
+      border:1px solid var(--border);
+      transition:all var(--transition-fast);
+      flex-shrink:0;
+      text-decoration:none;
+    }
+    .nav-social-link:hover { color:var(--amber-light); border-color:var(--amber-glow); background:rgba(255,159,28,0.06); }
+    .nav-social-link svg { width:15px; height:15px; }
+    @media (max-width:900px) { .nav-social-link { display:none; } }
+
+    /* COMING SOON RIBBON on phase cards */
+    .phase-coming-soon-tag {
+      position:absolute; top:0.75rem; right:0.75rem;
+      font-family:var(--font-mono);
+      font-size:0.52rem; letter-spacing:0.22em;
+      color:var(--amber-glow); text-transform:uppercase;
+      background:rgba(4,13,10,0.95);
+      border:1px solid rgba(255,159,28,0.25);
+      padding:0.18rem 0.5rem;
+      animation:hint-pulse 2.5s ease infinite;
+    }
+
+    /* LAUNCH DATE badge on phase 1 */
+    .phase-launch-date {
+      display:flex; flex-direction:column; gap:0.4rem; align-items:flex-start; margin-top:0.5rem;
+    }
+    .launch-date-pill {
+      display:inline-flex; align-items:center; gap:0.4rem;
+      font-size:0.6rem; letter-spacing:0.2em;
+      color:var(--amber-glow);
+      border:1px solid rgba(255,159,28,0.3);
+      background:rgba(255,159,28,0.05);
+      padding:0.22rem 0.65rem;
+      text-transform:uppercase;
+    }
+    .launch-date-pill svg { flex-shrink:0; }
+
+    /* Custom cursor */
+    body { cursor: none; }
+    #customCursor {
+      position: fixed; top: 0; left: 0;
+      width: 20px; height: 20px;
+      pointer-events: none; z-index: 99999;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.2s ease;
+    }
+    #customCursor .cursor-ring {
+      position: absolute; inset: 0;
+      border: 1.5px solid rgba(255,159,28,0.7);
+      border-radius: 50%;
+      animation: cursor-pulse 2s ease infinite;
+    }
+    #customCursor .cursor-dot {
+      position: absolute; top: 50%; left: 50%;
+      width: 4px; height: 4px;
+      background: #ff9f1c;
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 6px #ff9f1c;
+    }
+    @keyframes cursor-pulse {
+      0%, 100% { opacity: 0.7; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.15); }
+    }
+    a, button { cursor: none; }
+
+    /* Contract address box */
+    #caBox {
+      margin: 1.5rem auto 0;
+      max-width: 560px;
+      border: 1px solid rgba(255,159,28,0.35);
+      background: rgba(4,13,10,0.9);
+      padding: 1rem 1.25rem;
+      text-align: center;
+    }
+    .ca-launched-label {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
+      color: var(--green);
+      text-transform: uppercase;
+      margin-bottom: 0.65rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    .ca-live-dot {
+      width: 7px; height: 7px;
+      background: var(--green);
+      border-radius: 50%;
+      display: inline-block;
+      box-shadow: 0 0 8px var(--green);
+      animation: blink 1.5s infinite;
+    }
+    .ca-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .ca-prefix {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      color: var(--amber-glow);
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+    .ca-address {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      letter-spacing: 0.05em;
+      color: var(--bone);
+      word-break: break-all;
+    }
+    .ca-copy-btn {
+      background: rgba(255,159,28,0.08);
+      border: 1px solid rgba(255,159,28,0.3);
+      color: var(--amber-glow);
+      padding: 0.3rem 0.45rem;
+      cursor: none;
+      transition: background 0.2s;
+      display: flex; align-items: center;
+    }
+    .ca-copy-btn:hover { background: rgba(255,159,28,0.15); }
+    .ca-tba-note {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      color: var(--bone-dim);
+      margin-top: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    /* NFT coming soon overlay */
+    .nft-coming-phase {
+      margin: 2rem 0 0;
+      border: 1px solid rgba(255,159,28,0.25);
+      background: rgba(4,13,10,0.85);
+      padding: 1.25rem 1.5rem;
+      text-align: center;
+    }
+    .nft-coming-phase .ncp-label {
+      font-family: var(--font-mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.25em;
+      color: var(--amber-glow);
+      text-transform: uppercase;
+      opacity: 0.7;
+      margin-bottom: 0.4rem;
+    }
+    .nft-coming-phase .ncp-text {
+      font-family: var(--font-display);
+      font-size: clamp(0.85rem, 2vw, 1.05rem);
+      color: var(--bone);
+      letter-spacing: 0.08em;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div id="customCursor"><div class="cursor-ring"></div><div class="cursor-dot"></div></div>
+<script>
+  (function(){
+    const cur = document.getElementById('customCursor');
+    document.addEventListener('mousemove', e => {
+      cur.style.left = e.clientX + 'px';
+      cur.style.top  = e.clientY + 'px';
+    });
+    document.addEventListener('mouseleave', () => { cur.style.opacity = '0'; });
+    document.addEventListener('mouseenter', () => { cur.style.opacity = '1'; });
+  })();
+</script>
+
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">$EXTINCT</a>
+
+    <ul class="nav-links">
+      <li><a href="#lore">The Signal</a></li>
+      <li><a href="#nft">Species</a></li>
+      <li><a href="#lab">DNA Lab</a></li>
+      <li><a href="#hierarchy">Revivalists</a></li>
+      <li><a href="#roadmap">Phases</a></li>
+    </ul>
+
+    <div style="display:flex;align-items:center;gap:0.5rem;flex-shrink:0;">
+      <!-- Telegram -->
+      <a href="https://t.me/theextinctclub" target="_blank" rel="noopener"
+         class="nav-social-link" aria-label="Telegram" title="Telegram">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+        </svg>
+      </a>
+      <!-- X / Twitter -->
+      <a href="https://x.com/theextinctclub" target="_blank" rel="noopener"
+         class="nav-social-link" aria-label="Twitter @theextinctclub" title="@theextinctclub">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L2.196 2.25h6.813l4.261 5.635zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      </a>
+      <a href="#cta" class="nav-cta">Join the Lab</a>
+    </div>
+
+    <button class="nav-hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- Mobile Drawer -->
+<div class="nav-mobile" id="mobileMenu" role="navigation" aria-label="Mobile menu">
+  <a href="#lore"      onclick="closeMobile()">The Signal</a>
+  <a href="#nft"       onclick="closeMobile()">Species Codex</a>
+  <a href="#lab"       onclick="closeMobile()">DNA Lab</a>
+  <a href="#hierarchy" onclick="closeMobile()">Revivalists</a>
+  <a href="#roadmap"   onclick="closeMobile()">Phases</a>
+  <!-- social in mobile menu -->
+  <a href="https://t.me/theextinctclub" target="_blank" rel="noopener" onclick="closeMobile()" style="display:flex;align-items:center;gap:0.5rem;">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+    Telegram
+  </a>
+  <a href="https://x.com/theextinctclub" target="_blank" rel="noopener" onclick="closeMobile()" style="display:flex;align-items:center;gap:0.5rem;">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L2.196 2.25h6.813l4.261 5.635zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    @theextinctclub
+  </a>
+  <a href="#cta" class="mobile-cta" onclick="closeMobile()">
+    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:0.35rem" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+    Join the Lab
+  </a>
+</div>
+
+
+<section id="hero">
+  <div class="hero-atmosphere"></div>
+  <div class="hero-scanline"></div>
+  <div class="particle-field" id="particleField"></div>
+
+  <!-- Mammoth SVG Silhouette -->
+  <svg class="hero-creature" viewBox="0 0 800 400" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M680 380 C680 380 670 300 660 280 C650 260 630 250 620 240 C610 230 610 210 620 200 C630 190 650 185 655 170 C660 155 650 140 640 135 C620 125 600 130 585 145 C575 155 572 170 565 180 C555 195 540 200 530 200 C510 200 490 185 470 180 C445 173 418 178 400 170 C375 160 360 135 345 118 C330 101 310 95 290 98 C265 102 250 120 245 140 C240 158 248 178 255 195 C260 207 268 217 268 230 C268 250 252 265 240 278 C225 295 205 305 195 320 C183 338 185 360 185 380 Z" fill="rgba(212,197,169,0.6)"/>
+    <path d="M565 180 C555 190 535 210 510 240 C495 258 490 275 495 290" stroke="rgba(212,197,169,0.5)" stroke-width="8" stroke-linecap="round" fill="none"/>
+    <path d="M585 145 C575 150 560 168 545 190 C530 210 520 230 525 248" stroke="rgba(212,197,169,0.45)" stroke-width="7" stroke-linecap="round" fill="none"/>
+    <path d="M400 170 C390 185 378 200 370 218 C362 235 362 255 368 270 C374 285 382 295 380 310" stroke="rgba(212,197,169,0.5)" stroke-width="12" stroke-linecap="round" fill="none"/>
+    <rect x="210" y="320" width="28" height="60" rx="4" fill="rgba(212,197,169,0.5)"/>
+    <rect x="255" y="315" width="28" height="65" rx="4" fill="rgba(212,197,169,0.5)"/>
+    <rect x="550" y="318" width="28" height="62" rx="4" fill="rgba(212,197,169,0.5)"/>
+    <rect x="595" y="322" width="28" height="58" rx="4" fill="rgba(212,197,169,0.5)"/>
+    <circle cx="645" cy="162" r="7" fill="rgba(255,159,28,0.4)"/>
+    <circle cx="645" cy="162" r="3" fill="rgba(255,159,28,0.7)"/>
+  </svg>
+
+  <div class="hero-badge">
+    <span class="badge-dot"></span>
+    Lazarus Signal Active — Project Phase 0
+  </div>
+
+  <h1 class="hero-title" data-text="$EXTINCT">$EXTINCT</h1>
+  <p class="hero-tagline">They Were Gone. Now They Return.</p>
+
+  <blockquote class="hero-quote">
+    "Extinction is not an end. It is a compression. A silence waiting to be broken by the right frequency."
+  </blockquote>
+  <div class="hero-actions">
+    <a href="#lab" class="btn btn-primary">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      Enter the Lab
+    </a>
+    <a href="#lore" class="btn btn-outline">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+      Read the Signal
+    </a>
+  </div>
+
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num">8,888</span><span class="stat-label">NFT Species</span></div>
+    <div class="stat-divider"></div>
+    <div class="stat"><span class="stat-num">888</span><span class="stat-label">Max Hybrids</span></div>
+    <div class="stat-divider"></div>
+    <div class="stat"><span class="stat-num">5</span><span class="stat-label">Extinction Epochs</span></div>
+    <div class="stat-divider"></div>
+    <div class="stat"><span class="stat-num">3×</span><span class="stat-label">Annual Events</span></div>
+  </div>
+  <div class="launch-countdown" id="countdownWrap">
+    <div class="countdown-label">Meme Coin Launch Countdown</div>
+    <div class="countdown-timer">
+      <div class="countdown-unit">
+        <div class="countdown-num" id="cd-days">00</div>
+        <div class="countdown-unit-label">Days</div>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit">
+        <div class="countdown-num" id="cd-hours">00</div>
+        <div class="countdown-unit-label">Hours</div>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit">
+        <div class="countdown-num" id="cd-mins">00</div>
+        <div class="countdown-unit-label">Mins</div>
+      </div>
+      <div class="countdown-sep">:</div>
+      <div class="countdown-unit">
+        <div class="countdown-num" id="cd-secs">00</div>
+        <div class="countdown-unit-label">Secs</div>
+      </div>
+    </div>
+    <div class="countdown-date">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;margin-right:0.35rem;opacity:0.7" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span>04 March 2026 · Wednesday · 3:00 PM UTC</span> — Pump.fun Fair Launch · No Presale · No VC
+    </div>
+  </div>
+
+  <div class="scroll-cue" aria-hidden="true">
+    <span>Scroll to Awaken</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<section id="lore">
+  <div class="container">
+    <div class="section-eyebrow reveal">Signal Origin</div>
+    <h2 class="section-heading reveal reveal-delay-1">The <em>Ghost DNA</em> Discovery</h2>
+    <p class="section-lead reveal reveal-delay-2">
+      In 2019, a classified consortium operating under codename Project Lazarus encoded Ghost DNA fragments of 888 extinct species as cryptographic DNA Shards — immutable, mathematically unique, verifiably authentic. Alone, each Shard is an echo. Unlocked together with $EXTINCT, they rebuild what time destroyed.
+    </p>
+
+    <div class="epoch-grid">
+
+      <div class="epoch reveal">
+        <div class="epoch-era">~541 MYA<br>Paleozoic<br>Era</div>
+        <div class="epoch-body">
+          <div class="epoch-label">Epoch I</div>
+          <div class="epoch-name">The Ancient</div>
+          <div class="epoch-desc">The oldest signals. Pre-dinosaur lifeforms whose Ghost DNA carries data from a world unrecognizable to us. The hardest to reconstruct — and the most powerful. Every Genesis Keeper covets them.</div>
+          <div class="species-chips">
+            <span class="chip">Trilobite</span><span class="chip">Dunkleosteus</span>
+            <span class="chip">Anomalocaris</span><span class="chip">Giant Sea Scorpion</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="epoch reveal">
+        <div class="epoch-era">~252 MYA<br>Permian-<br>Triassic</div>
+        <div class="epoch-body">
+          <div class="epoch-label">Epoch II</div>
+          <div class="epoch-name">The Great Dying</div>
+          <div class="epoch-desc">Survivors of the most catastrophic extinction ever recorded — 96% of all species wiped out in under 60,000 years. These proto-mammals carry trauma encoded in their very sequences. Rare. Fierce. Coveted.</div>
+          <div class="species-chips">
+            <span class="chip">Gorgonopsid</span><span class="chip">Lystrosaurus</span>
+            <span class="chip">Diictodon</span><span class="chip">Estemmenosuchus</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="epoch reveal">
+        <div class="epoch-era">~230 MYA<br>Mesozoic<br>Era</div>
+        <div class="epoch-body">
+          <div class="epoch-label">Epoch III</div>
+          <div class="epoch-name">The Giants</div>
+          <div class="epoch-desc">Not the dinosaurs you expect — the ones history forgot. Overlooked legends who dominated ecosystems for millions of years before vanishing almost without trace. The Forbidden Lab unlocks their deepest sequences.</div>
+          <div class="species-chips">
+            <span class="chip">Spinosaurus</span><span class="chip">Therizinosaurus</span>
+            <span class="chip">Deinocheirus</span><span class="chip">Argentinosaurus</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="epoch reveal">
+        <div class="epoch-era">~2.6 MYA<br>Pleistocene<br>Epoch</div>
+        <div class="epoch-body">
+          <div class="epoch-label">Epoch IV</div>
+          <div class="epoch-name">The Ice Age</div>
+          <div class="epoch-desc">The most emotionally resonant. Creatures that walked alongside our earliest ancestors — whose disappearance may have been hastened by those very ancestors now attempting to bring them back.</div>
+          <div class="species-chips">
+            <span class="chip">Woolly Mammoth</span><span class="chip">Cave Lion</span>
+            <span class="chip">Saber-tooth</span><span class="chip">Short-faced Bear</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="epoch reveal">
+        <div class="epoch-era">Last 500<br>Years<br>Holocene</div>
+        <div class="epoch-body">
+          <div class="epoch-label">Epoch V</div>
+          <div class="epoch-name">The Recent Lost</div>
+          <div class="epoch-desc">Gone within human memory. Some within living memory. The most haunting — because we watched them go. Their Ghost DNA is freshest, their signal strongest. The Genesis Collection begins here.</div>
+          <div class="species-chips">
+            <span class="chip">Dodo</span><span class="chip">Thylacine</span>
+            <span class="chip">Passenger Pigeon</span><span class="chip">Baiji Dolphin</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<section id="nft">
+  <div class="container">
+    <div class="nft-header-row">
+      <div>
+        <div class="section-eyebrow reveal">Species Codex</div>
+        <h2 class="section-heading reveal reveal-delay-1">8,888 <em>Dormant Shards</em><br>Awaiting Resurrection</h2>
+        <p class="section-lead reveal reveal-delay-2">Every NFT begins as a Dormant Shard — a fragmented silhouette. As you deploy $EXTINCT tokens in the DNA Lab, the creature awakens in real time. No two resurrections are identical.</p>
+      </div>
+      <div class="nft-hint reveal" aria-hidden="true">Hover a card to detect signal</div>
+    </div>
+
+    <div class="nft-grid" id="nftGrid"></div>
+
+    <p class="nft-footer-note reveal">◈ 3% of all NFTs contain hidden Ghost Sequences — a dormant gene from a second species</p>
+    <div class="nft-codex-cta">
+      <a href="pages/codex.html" class="btn btn-outline reveal">
+        View Full Species Codex
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <div class="nft-coming-phase reveal">
+      <div class="ncp-label">Next Phase</div>
+      <div class="ncp-text">NFT Collection drops in Phase 2 — after Token Launch</div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<!-- DNA LAB ═══════════════ -->
+<section id="lab">
+  <div class="lab-glow"></div>
+  <div class="container">
+    <div class="section-eyebrow reveal">Gameplay Engine</div>
+    <h2 class="section-heading reveal reveal-delay-1">The <em>DNA Lab</em></h2>
+    <p class="section-lead reveal reveal-delay-2">The chain is the lab. The players are the scientists. A living survival simulation — evolutionary pressures encoded on-chain. Three pillars. One breathing economy. Remove any one and the ecosystem collapses.</p>
+
+    <!-- Trinity -->
+    <div class="trinity">
+      <div class="trinity-card reveal">
+        <div class="trinity-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <circle cx="24" cy="24" r="20" stroke="rgba(255,159,28,0.35)" stroke-width="1.5"/>
+            <circle cx="24" cy="24" r="12" stroke="rgba(255,159,28,0.5)" stroke-width="1"/>
+            <circle cx="24" cy="24" r="5"  fill="rgba(255,159,28,0.7)"/>
+            <path d="M24 4L24 8M24 40L24 44M4 24L8 24M40 24L44 24" stroke="rgba(255,159,28,0.4)" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="trinity-label">$EXTINCT Token</div>
+        <div class="trinity-desc">The fuel. Earned through gameplay and community events. Spent to unlock NFT layers and power the Lab. Burned to drive the greatest resurrections. Without it, nothing moves.</div>
+      </div>
+      <div class="trinity-arrow" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(200,134,10,0.45)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </div>
+
+      <div class="trinity-card reveal reveal-delay-1">
+        <div class="trinity-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <path d="M24 4C24 4 14 12 14 24C14 36 24 44 24 44C24 44 34 36 34 24C34 12 24 4 24 4Z" stroke="rgba(255,159,28,0.5)" stroke-width="1.5" fill="rgba(255,159,28,0.05)"/>
+            <circle cx="24" cy="16" r="3" fill="rgba(255,159,28,0.6)"/>
+            <circle cx="18" cy="26" r="2.5" fill="rgba(255,159,28,0.5)"/>
+            <circle cx="30" cy="26" r="2.5" fill="rgba(255,159,28,0.5)"/>
+            <circle cx="24" cy="36" r="3" fill="rgba(255,159,28,0.6)"/>
+            <path d="M24 16L18 26L24 36L30 26Z" stroke="rgba(255,159,28,0.3)" stroke-width="1" fill="none"/>
+          </svg>
+        </div>
+        <div class="trinity-label">NFT Collection</div>
+        <div class="trinity-desc">The identity. Each NFT is a living species profile — a creature that evolves with the holder, gains power through bonding, and exists as a unique artifact of restoration.</div>
+      </div>
+
+      <div class="trinity-arrow" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="rgba(200,134,10,0.45)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </div>
+
+      <div class="trinity-card reveal reveal-delay-2">
+        <div class="trinity-icon">
+          <svg width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <rect x="8" y="14" width="32" height="24" rx="3" stroke="rgba(255,159,28,0.4)" stroke-width="1.5" fill="rgba(255,159,28,0.03)"/>
+            <path d="M16 22L20 28L24 22L28 30L32 24" stroke="rgba(26,255,140,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            <rect x="14" y="8" width="6" height="8" rx="2" fill="rgba(255,159,28,0.35)"/>
+            <rect x="22" y="6" width="6" height="10" rx="2" fill="rgba(255,159,28,0.25)"/>
+            <rect x="30" y="9" width="6" height="7"  rx="2" fill="rgba(255,159,28,0.3)"/>
+          </svg>
+        </div>
+        <div class="trinity-label">DNA Lab</div>
+        <div class="trinity-desc">The world. A living ecosystem where species are researched, evolved, and bred. Lab activity drives token demand. NFT rarity determines Lab power. The loop is complete.</div>
+      </div>
+    </div>
+
+    <!-- Mechanics -->
+    <div class="mechanics-grid">
+      <div class="mechanic reveal">
+        <div class="mechanic-bg-num">01</div>
+        <div class="mechanic-title">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><circle cx="9" cy="9" r="7" stroke="currentColor" stroke-width="1.2"/><path d="M6 9L8 11L12 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+          Experiment System
+        </div>
+        <div class="mechanic-desc">Spend $EXTINCT to run experiments on your NFT. Unlock Adaptive Traits, reveal hidden Ghost Sequences, strengthen your species' Awakening State. Every result is on-chain, permanent, and unique to you.</div>
+      </div>
+      <div class="mechanic reveal reveal-delay-1">
+        <div class="mechanic-bg-num">02</div>
+        <div class="mechanic-title">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M3 9C3 5.7 5.7 3 9 3C10.6 3 12 3.6 13.1 4.7" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M15 9C15 12.3 12.3 15 9 15C7.4 15 6 14.4 4.9 13.3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/><path d="M13 2L13 6L9 6M5 16L5 12L9 12" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Hybrid Minting
+        </div>
+        <div class="mechanic-desc">Combine two Rare+ NFTs to create a tradeable Hybrid species with a unique on-chain DNA profile. Triple Lock: Rarity Lock + 30-day Dormancy Lock + Supply Lock (max 888 Hybrids ever, permanently).</div>
+      </div>
+      <div class="mechanic reveal reveal-delay-2">
+        <div class="mechanic-bg-num">03</div>
+        <div class="mechanic-title">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true"><path d="M9 2L11 7L16 7L12 10.5L13.5 15.5L9 12.5L4.5 15.5L6 10.5L2 7L7 7Z" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+          Extinction Events
+        </div>
+        <div class="mechanic-desc">3× per year, a Great Extinction Event strikes. The community must collectively spend $EXTINCT before the timer expires. Succeed — permanent upgrades. Fail — Ghost Sequences burn forever.</div>
+      </div>
+    </div>
+
+    <!-- Earn / Burn -->
+    <div class="economy-grid">
+      <div class="economy-card earn reveal">
+        <div class="economy-title">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 2L8 14M4 6L8 2L12 6" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Earn Sources
+        </div>
+        <ul class="economy-list">
+          <li>Daily limited missions</li>
+          <li>Great Extinction Event rewards</li>
+          <li>Lab competition prizes</li>
+          <li>Governance participation</li>
+        </ul>
+      </div>
+      <div class="economy-card burn reveal reveal-delay-1">
+        <div class="economy-title">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M8 13C8 13 3 10 3 6C3 3.8 5.5 2 8 4C10.5 2 13 3.8 13 6C13 10 8 13 8 13Z" stroke="currentColor" stroke-width="1.3" fill="none"/><path d="M8 9C8 9 6 7.5 6 6" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          Burn Sources
+        </div>
+        <ul class="economy-list">
+          <li>All Lab experiments</li>
+          <li>Lab facility upgrades</li>
+          <li>Hybrid minting (Triple Lock)</li>
+          <li>Governance voting &amp; acceleration</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<section id="hierarchy">
+  <div class="container">
+    <div class="section-eyebrow reveal">Token Utility</div>
+    <h2 class="section-heading reveal reveal-delay-1">The <em>Revivalist</em> Hierarchy</h2>
+    <p class="section-lead reveal reveal-delay-2">Your position in the ecosystem is determined by how many $EXTINCT you hold at Genesis Snapshot. A minimum 7-day holding period applies — tier benefits are earned through sustained commitment, not last-minute accumulation.</p>
+
+    <div class="tier-table-wrap reveal">
+      <table class="tier-table">
+        <thead>
+          <tr class="tier-header">
+            <th>Tier</th>
+            <th>Holding Required</th>
+            <th>NFT Discount</th>
+            <th>Special Access</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="tier-name-cell">
+              <div class="tier-icon-wrap" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="10" r="5" stroke="rgba(138,122,98,0.6)" stroke-width="1.2"/><path d="M8 5L8 2M5.5 6L3.5 4M10.5 6L12.5 4" stroke="rgba(138,122,98,0.5)" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+              Seed Holder
+            </div></td>
+            <td class="holding-cell">0 — 10K</td>
+            <td><span class="discount-none">—</span></td>
+            <td class="access-cell">Signal access, faint species awareness</td>
+          </tr>
+          <tr>
+            <td><div class="tier-name-cell">
+              <div class="tier-icon-wrap" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6" stroke="rgba(255,159,28,0.45)" stroke-width="1.2"/><path d="M5 8L7 10L11 6" stroke="rgba(255,159,28,0.6)" stroke-width="1.3" stroke-linecap="round"/></svg></div>
+              Tracker
+            </div></td>
+            <td class="holding-cell">10K — 100K</td>
+            <td class="discount-cell">20% OFF</td>
+            <td class="access-cell">DNA Shards respond, early lore drops</td>
+          </tr>
+          <tr>
+            <td><div class="tier-name-cell">
+              <div class="tier-icon-wrap" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="3" y="5" width="10" height="8" rx="1" stroke="rgba(255,159,28,0.55)" stroke-width="1.2"/><path d="M6 5L6 3.5C6 2.7 6.7 2 7.5 2L8.5 2C9.3 2 10 2.7 10 3.5L10 5" stroke="rgba(255,159,28,0.5)" stroke-width="1.2" fill="none"/><line x1="8" y1="8" x2="8" y2="10" stroke="rgba(255,159,28,0.6)" stroke-width="1.2" stroke-linecap="round"/></svg></div>
+              Archivist
+            </div></td>
+            <td class="holding-cell">100K — 500K</td>
+            <td class="discount-cell">35% OFF</td>
+            <td class="access-cell">Governance voting rights activated</td>
+          </tr>
+          <tr>
+            <td><div class="tier-name-cell">
+              <div class="tier-icon-wrap" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2L9.5 6L14 6L10.5 8.5L11.5 13L8 10.5L4.5 13L5.5 8.5L2 6L6.5 6Z" stroke="rgba(255,159,28,0.65)" stroke-width="1.2" fill="rgba(255,159,28,0.06)"/></svg></div>
+              Resurrector
+            </div></td>
+            <td class="holding-cell">500K — 2M</td>
+            <td class="discount-cell">50% OFF</td>
+            <td class="access-cell">Full unlock access, DNA Lab priority</td>
+          </tr>
+          <tr class="tier-genesis">
+            <td><div class="tier-name-cell">
+              <div class="tier-icon-wrap" aria-hidden="true"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1L9.8 5.8L15 5.8L10.8 8.8L12.5 14L8 11L3.5 14L5.2 8.8L1 5.8L6.2 5.8Z" fill="rgba(255,159,28,0.35)" stroke="rgba(255,159,28,0.7)" stroke-width="0.8"/></svg></div>
+              Genesis Keeper
+              <span class="badge badge-elite">
+                <svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                Elite
+              </span>
+            </div></td>
+            <td class="holding-cell">2M+</td>
+            <td class="discount-cell">60% OFF</td>
+            <td class="access-cell">Exclusive species, first reveal, Lazarus Council seat, treasury governance</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<section id="roadmap">
+  <div class="container">
+    <div class="section-eyebrow reveal">Project Phases</div>
+    <h2 class="section-heading reveal reveal-delay-1">The <em>Resurrection</em> Roadmap</h2>
+    <p class="section-lead reveal reveal-delay-2">Every phase delivers before the next begins. No phase is announced without proof of progress — the community will always have something real to anticipate, never just a promise.</p>
+
+    <div class="phases-wrap">
+      <div class="phases">
+
+        <!-- Phase 0 — ACTIVE NOW -->
+        <div class="phase phase-active reveal">
+          <div class="phase-node" aria-hidden="true"></div>
+          <div class="phase-num">Phase 0</div>
+          <div class="phase-title">Narrative</div>
+          <div class="phase-desc">The world is built in language before it's built in code. Lore Canon established. Species Codex prepared. Visual identity locked. NFT art previews launched. The signal begins here.</div>
+          <span class="badge badge-live">
+            <span style="width:6px;height:6px;background:var(--green);border-radius:50%;display:inline-block;animation:blink 1.5s infinite" aria-hidden="true"></span>
+            Active Now
+          </span>
+        </div>
+
+        <!-- Phase 1 — Token Launch with date -->
+        <div class="phase reveal reveal-delay-1">
+          <div class="phase-node" aria-hidden="true"></div>
+          <div class="phase-num">Phase 1</div>
+          <div class="phase-title">Token Launch</div>
+          <div class="phase-desc">$EXTINCT launches on Pump.fun. Fair launch — no presale, no VC. Revivalist community forms. Genesis NFT whitelist snapshot scheduled. Early holders receive Founder status.</div>
+          <div class="phase-launch-date">
+            <span class="launch-date-pill">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              04 Mar 2026 · 3:00 PM UTC
+            </span>
+            <span class="badge badge-soon">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Coming Soon
+            </span>
+          </div>
+        </div>
+
+        <!-- Phase 2 — Coming Soon -->
+        <div class="phase reveal reveal-delay-2" style="position:relative;overflow:hidden;">
+          <div class="phase-node" aria-hidden="true"></div>
+          <div class="phase-coming-soon-tag">Coming Soon</div>
+          <div class="phase-num">Phase 2</div>
+          <div class="phase-title">NFT Drop</div>
+          <div class="phase-desc">First 888 species resurrect as Dormant Shards. Genesis Collection opens — Epoch V first. Tier-based discounts activate. Bond Protocol goes live. Codex opens to community contributions.</div>
+          <span class="badge badge-future">
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Future Phase
+          </span>
+        </div>
+
+        <!-- Phase 3 — Coming Soon -->
+        <div class="phase reveal reveal-delay-3" style="position:relative;overflow:hidden;">
+          <div class="phase-node" aria-hidden="true"></div>
+          <div class="phase-coming-soon-tag">Coming Soon</div>
+          <div class="phase-num">Phase 3</div>
+          <div class="phase-title">DNA Lab</div>
+          <div class="phase-desc">The Lab launches. All three pillars connect. Experiments begin. First Hybrid minting window opens. First Great Extinction Event scheduled. The loop is complete. The world is alive.</div>
+          <span class="badge badge-future">
+            <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Future Phase
+          </span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+
+<section id="cta">
+  <div class="cta-radial" aria-hidden="true"></div>
+  <div class="cta-grid-lines" aria-hidden="true"></div>
+  <div class="container">
+    <div class="cta-eyebrow reveal">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true"><polygon points="6,1 11,11 1,11" stroke="currentColor" stroke-width="1.2" fill="none"/></svg>
+      The Signal Does Not Die
+    </div>
+    <h2 class="cta-title reveal">Revive Them.</h2>
+    <p class="cta-sub reveal">Join the Revivalist Community</p>
+    <div class="cta-buttons reveal">
+      <a href="https://pump.fun" target="_blank" rel="noopener" class="btn btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Launch on Pump.fun
+      </a>
+      <!-- Telegram CTA button -->
+      <a href="https://t.me/theextinctclub" target="_blank" rel="noopener" class="btn btn-outline">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        Telegram
+      </a>
+      <a href="https://x.com/theextinctclub" target="_blank" rel="noopener" class="btn btn-ghost">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L2.196 2.25h6.813l4.261 5.635zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        Twitter / X
+      </a>
+
+    </div>
+    <p class="cta-quote reveal">
+      "The chain does not forget. The signal does not die. And the creatures that walked this earth before us — they are not gone. They are waiting."
+    </p>
+  </div>
+</section>
+
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">$EXTINCT</div>
+    <ul class="footer-links">
+      <li><a href="pages/lore.html">Lore Document</a></li>
+      <!-- Telegram -->
+      <li>
+        <a href="https://t.me/theextinctclub" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.35rem;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.244-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+          Telegram
+        </a>
+      </li>
+      <li>
+        <a href="https://x.com/theextinctclub" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.35rem;">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.748l7.73-8.835L2.196 2.25h6.813l4.261 5.635zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          Twitter / X
+        </a>
+      </li>
+
+      <li><a href="https://pump.fun" target="_blank" rel="noopener">Pump.fun</a></li>
+      <li><a href="pages/codex.html">Species Codex</a></li>
+      <li><a href="pages/disclaimer.html">Disclaimer</a></li>
+    </ul>
+    <p class="footer-disclaimer">
+      This site is for narrative and informational purposes only. $EXTINCT tokens and NFTs are not investment products. Participation involves significant risk including total loss of funds. Cryptocurrency and NFT markets are highly volatile and largely unregulated. Always conduct your own research before making any financial decisions. Not Financial Advice.
+    </p>
+  </div>
+</footer>
+
+<script src="js/creatures.js"></script>
+<script src="js/countdown.js"></script>
+<script src="js/main.js"></script>
+
+</body>
+</html>

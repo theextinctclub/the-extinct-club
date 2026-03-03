@@ -1,0 +1,237 @@
+/* ── HERO WRAPPER ── */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 8rem 2rem 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ── ATMOSPHERIC BG ── */
+.hero-atmosphere {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 55% at 50% 65%, rgba(200,134,10,0.07) 0%, transparent 65%),
+    radial-gradient(ellipse 45% 45% at 25% 25%, rgba(26,255,140,0.025) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 50% at 75% 75%, rgba(200,134,10,0.03) 0%, transparent 55%),
+    var(--bg);
+  pointer-events: none;
+}
+
+/* ── MAMMOTH CREATURE ── */
+.hero-creature {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(700px, 90vw);
+  opacity: 0.055;
+  pointer-events: none;
+  filter: sepia(1) saturate(3) hue-rotate(-10deg);
+}
+
+/* ── SCANLINE ANIMATION ── */
+.hero-scanline {
+  position: absolute;
+  left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255,159,28,0.4), transparent);
+  animation: scan 6s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── PARTICLE FIELD ── */
+.particle-field {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.pdot {
+  position: absolute;
+  border-radius: 50%;
+  animation: rise linear infinite;
+  bottom: 0;
+}
+
+/* ── HERO TITLE ── */
+.hero-title {
+  font-family: var(--font-display);
+  font-size: var(--text-hero);
+  font-weight: 900;
+  line-height: 1;
+  color: var(--amber-light);
+  text-shadow: var(--glow-amber);
+  position: relative;
+  z-index: 2;
+  animation: fadein 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Glitch effect layers */
+.hero-title::before,
+.hero-title::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+.hero-title::before {
+  color: rgba(255, 50, 100, 0.35);
+  animation: glitch-a 5s infinite;
+}
+
+.hero-title::after {
+  color: rgba(0, 255, 180, 0.25);
+  animation: glitch-b 5s infinite;
+}
+
+/* ── TAGLINE ── */
+.hero-tagline {
+  font-family: var(--font-title);
+  font-size: clamp(0.85rem, 2.2vw, 1.2rem);
+  letter-spacing: 0.35em;
+  color: var(--bone-dim);
+  text-transform: uppercase;
+  margin-top: 1.1rem;
+  position: relative;
+  z-index: 2;
+  animation: fadein 1.4s 0.25s both;
+}
+
+/* ── QUOTE ── */
+.hero-quote {
+  font-size: var(--text-sm);
+  color: var(--bone-faint);
+  font-style: italic;
+  line-height: 1.9;
+  max-width: 460px;
+  margin-top: 2rem;
+  position: relative;
+  z-index: 2;
+  animation: fadein 1.4s 0.5s both;
+  border-left: 2px solid rgba(200, 134, 10, 0.25);
+  padding-left: 1.1rem;
+  text-align: left;
+}
+
+/* ── CTA BUTTONS ── */
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+  justify-content: center;
+  margin-top: 2.8rem;
+  position: relative;
+  z-index: 2;
+  animation: fadein 1.4s 0.75s both;
+}
+
+/* ── STATS ROW ── */
+.hero-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0 3rem;
+  margin-top: 4.5rem;
+  position: relative;
+  z-index: 2;
+  animation: fadein 1.4s 1s both;
+}
+
+.stat { text-align: center; padding: 0.5rem 1rem; }
+
+.stat-num {
+  display: block;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  color: var(--amber-light);
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(245, 166, 35, 0.3);
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.62rem;
+  letter-spacing: 0.28em;
+  color: var(--bone-dim);
+  text-transform: uppercase;
+  margin-top: 0.4rem;
+}
+
+.stat-divider {
+  width: 1px;
+  background: rgba(200, 134, 10, 0.2);
+  align-self: stretch;
+  margin: 0.5rem 0;
+}
+
+/* ── SCROLL CUE ── */
+.scroll-cue {
+  position: absolute;
+  bottom: 2.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.58rem;
+  letter-spacing: 0.32em;
+  color: var(--bone-dim);
+  text-transform: uppercase;
+  z-index: 2;
+  animation: bob 2.5s ease infinite;
+  white-space: nowrap;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 36px;
+  background: linear-gradient(to bottom, var(--amber-glow), transparent);
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero-stats { gap: 0 1.5rem; }
+  .stat-divider { display: none; }
+}
+
+@media (max-width: 600px) {
+  #hero { padding: 6rem 1.25rem 4rem; }
+
+  .hero-stats {
+    gap: 0.5rem 0;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .hero-actions .btn {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+
+  .hero-quote {
+    text-align: center;
+    border-left: none;
+    padding-left: 0;
+    border-top: 1px solid rgba(200, 134, 10, 0.2);
+    padding-top: 1rem;
+  }
+}

@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <!-- Amber gold gradient for skull -->
+    <radialGradient id="skullGold" cx="45%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#F5C842"/>
+      <stop offset="50%" stop-color="#D4880E"/>
+      <stop offset="100%" stop-color="#7A4800"/>
+    </radialGradient>
+    <!-- Green glow for eyes -->
+    <radialGradient id="eyeGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#7FFF00"/>
+      <stop offset="60%" stop-color="#39FF14"/>
+      <stop offset="100%" stop-color="#00AA00"/>
+    </radialGradient>
+    <!-- Drop shadow filter -->
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="0.6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <filter id="eyeFilter" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="0.8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Skull cranium -->
+  <ellipse cx="16" cy="13" rx="10" ry="11" fill="url(#skullGold)" stroke="#3D2000" stroke-width="0.7"/>
+
+  <!-- Cheekbones / face width taper -->
+  <path d="M7,17 Q5,20 6.5,24 Q8,26 10,26 L22,26 Q24,26 25.5,24 Q27,20 25,17 Z" 
+        fill="url(#skullGold)" stroke="#3D2000" stroke-width="0.7"/>
+
+  <!-- Jaw bone -->
+  <path d="M10,26 Q10,29 12,30 L20,30 Q22,29 22,26 Z" 
+        fill="#C8760A" stroke="#3D2000" stroke-width="0.6"/>
+
+  <!-- Cranium crack detail (simplified tribal) -->
+  <path d="M14,3 L15,7 L14.5,10" fill="none" stroke="#3D2000" stroke-width="0.6" opacity="0.7"/>
+  <path d="M17,4 L16,8" fill="none" stroke="#3D2000" stroke-width="0.5" opacity="0.5"/>
+
+  <!-- Left eye socket -->
+  <ellipse cx="11.5" cy="18" rx="3.2" ry="3.5" fill="#0A0500" stroke="#3D2000" stroke-width="0.5"/>
+  <!-- Right eye socket -->
+  <ellipse cx="20.5" cy="18" rx="3.2" ry="3.5" fill="#0A0500" stroke="#3D2000" stroke-width="0.5"/>
+
+  <!-- Left eye GREEN GLOW -->
+  <ellipse cx="11.5" cy="18" rx="2" ry="2.2" fill="url(#eyeGlow)" filter="url(#eyeFilter)" opacity="0.95"/>
+  <!-- Right eye GREEN GLOW -->
+  <ellipse cx="20.5" cy="18" rx="2" ry="2.2" fill="url(#eyeGlow)" filter="url(#eyeFilter)" opacity="0.95"/>
+
+  <!-- Nose cavity -->
+  <path d="M14.5,22 Q16,21 17.5,22 L17,24 Q16,24.5 15,24 Z" fill="#0A0500"/>
+
+  <!-- Teeth -->
+  <rect x="11" y="26.5" width="2.2" height="2.5" rx="0.5" fill="#E8DCC4" stroke="#3D2000" stroke-width="0.4"/>
+  <rect x="13.8" y="26.5" width="2.2" height="2.5" rx="0.5" fill="#E8DCC4" stroke="#3D2000" stroke-width="0.4"/>
+  <rect x="16.5" y="26.5" width="2.2" height="2.5" rx="0.5" fill="#E8DCC4" stroke="#3D2000" stroke-width="0.4"/>
+  <rect x="19.2" y="26.5" width="2.2" height="2.5" rx="0.5" fill="#E8DCC4" stroke="#3D2000" stroke-width="0.4"/>
+
+  <!-- Subtle highlight on cranium -->
+  <ellipse cx="13" cy="9" rx="4" ry="2.5" fill="#FFF0A0" opacity="0.08" transform="rotate(-15,13,9)"/>
+</svg>

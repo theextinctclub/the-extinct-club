@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Species Codex — $EXTINCT</title>
+  <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="../assets/images/favicon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/navbar.css">
+  <link rel="stylesheet" href="../css/nft.css">
+  <style>
+    .page-hero {
+      padding: calc(var(--nav-height) + 4rem) 0 4rem;
+      text-align: center;
+      background: linear-gradient(to bottom, var(--bg), var(--bg-2));
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .page-hero .section-eyebrow { justify-content: center; }
+    .page-hero .section-eyebrow::before { display: none; }
+
+    .page-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 4rem);
+      color: var(--amber-light);
+      text-shadow: var(--glow-amber);
+      margin: 1rem 0;
+    }
+
+    .page-hero p {
+      font-size: var(--text-base);
+      color: var(--bone-dim);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.9;
+    }
+
+    .codex-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .filter-btn {
+      font-family: var(--font-title);
+      font-size: var(--text-xs);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--bone-dim);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      border-color: var(--amber-glow);
+      color: var(--amber-light);
+      background: rgba(255,159,28,0.05);
+    }
+
+    .codex-section { padding: 4rem 0 6rem; }
+
+    .epoch-heading {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .epoch-heading-num {
+      font-family: var(--font-display);
+      font-size: 0.6rem;
+      color: var(--amber-glow);
+      letter-spacing: 0.3em;
+    }
+
+    .epoch-heading-name {
+      font-family: var(--font-title);
+      font-size: var(--text-2xl);
+      color: var(--bone);
+    }
+
+    .epoch-heading-count {
+      margin-left: auto;
+      font-size: var(--text-xs);
+      color: var(--bone-dim);
+      letter-spacing: 0.2em;
+    }
+
+    .epoch-section { margin-bottom: 5rem; }
+
+    @media (max-width: 600px) {
+      .codex-filters { padding: 1.5rem 1rem; }
+      .nft-grid { grid-template-columns: 1fr; }
+    }
+  
+    /* Custom cursor */
+    body { cursor: none; }
+    #customCursor { position:fixed;top:0;left:0;width:20px;height:20px;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:opacity 0.2s ease; }
+    #customCursor .cursor-ring { position:absolute;inset:0;border:1.5px solid rgba(255,159,28,0.7);border-radius:50%;animation:cur-pulse 2s ease infinite; }
+    #customCursor .cursor-dot { position:absolute;top:50%;left:50%;width:4px;height:4px;background:#ff9f1c;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 6px #ff9f1c; }
+    @keyframes cur-pulse { 0%,100%{opacity:.7;transform:scale(1)} 50%{opacity:1;transform:scale(1.15)} }
+    a, button { cursor: none; }
+  </style>
+</head>
+<body>
+<div id="customCursor"><div class="cursor-ring"></div><div class="cursor-dot"></div></div>
+<script>
+  (function(){
+    var cur=document.getElementById('customCursor');
+    document.addEventListener('mousemove',function(e){cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';});
+    document.addEventListener('mouseleave',function(){cur.style.opacity='0';});
+    document.addEventListener('mouseenter',function(){cur.style.opacity='1';});
+  })();
+</script>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">$EXTINCT</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#lore">The Signal</a></li>
+      <li><a href="../index.html#nft">Species</a></li>
+      <li><a href="../index.html#lab">DNA Lab</a></li>
+      <li><a href="../index.html#hierarchy">Revivalists</a></li>
+      <li><a href="../index.html#roadmap">Phases</a></li>
+    </ul>
+    <a href="../index.html#cta" class="nav-cta">Join the Lab</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<div class="nav-mobile" id="mobileMenu">
+  <a href="../index.html#lore"      onclick="closeMobile()">The Signal</a>
+  <a href="../index.html#nft"       onclick="closeMobile()">Species Codex</a>
+  <a href="../index.html#lab"       onclick="closeMobile()">DNA Lab</a>
+  <a href="../index.html#hierarchy" onclick="closeMobile()">Revivalists</a>
+  <a href="../index.html#roadmap"   onclick="closeMobile()">Phases</a>
+  <a href="../index.html#cta" class="mobile-cta" onclick="closeMobile()">⬡ Join the Lab</a>
+</div>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="container">
+    <div class="section-eyebrow">Species Codex</div>
+    <h1>All 8,888 Species</h1>
+    <p>Every extinct creature awaiting resurrection. From the oldest Paleozoic signals to the most recently lost. Filter by Epoch or Rarity.</p>
+  </div>
+</div>
+
+<!-- FILTERS -->
+<div class="codex-filters">
+  <button class="filter-btn active" data-filter="all">All Epochs</button>
+  <button class="filter-btn" data-filter="I">Epoch I — Ancient</button>
+  <button class="filter-btn" data-filter="II">Epoch II — Great Dying</button>
+  <button class="filter-btn" data-filter="III">Epoch III — Giants</button>
+  <button class="filter-btn" data-filter="IV">Epoch IV — Ice Age</button>
+  <button class="filter-btn" data-filter="V">Epoch V — Recent Lost</button>
+</div>
+
+<!-- CODEX GRID -->
+<section class="codex-section">
+  <div class="container">
+    <div class="nft-grid" id="codexGrid"></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">$EXTINCT</div>
+    <ul class="footer-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="https://x.com/theextinctclub" target="_blank" rel="noopener">Twitter / X</a></li>
+      
+      <li><a href="disclaimer.html">Disclaimer</a></li>
+    </ul>
+    <p class="footer-disclaimer">Not financial advice. For informational purposes only.</p>
+  </div>
+</footer>
+
+<script src="../js/creatures.js"></script>
+<script src="../js/main.js"></script>
+<script>
+  // Render all creatures
+  const renderCodex = () => {
+    const grid = document.getElementById('codexGrid');
+    if (!grid) return;
+
+    grid.innerHTML = CREATURE_DATA.map((c, i) => `
+      <div class="nft-card reveal reveal-delay-${i % 4}" data-epoch="${c.epoch}">
+        <div class="card-visual">
+          <svg class="creature-silhouette" viewBox="${c.svgViewBox}" fill="none">${c.svgContent}</svg>
+          <div class="card-scan"></div>
+          <div class="card-reveal">
+            <div class="reveal-signal">⬡ Ghost DNA Signal<br>Detected — ${c.epochSignal}</div>
+            <div class="reveal-cta">Deploy $EXTINCT to Resurrect</div>
+          </div>
+          <div class="card-status"><span class="status-dot"></span> Dormant Shard</div>
+        </div>
+        <div class="card-info">
+          <div class="card-epoch">${c.epochLabel}</div>
+          <div class="card-name">${c.name}</div>
+          <div class="card-traits">
+            ${c.traits.map(t => `<span class="trait trait-${t.type}">${t.label}</span>`).join('')}
+          </div>
+        </div>
+      </div>
+    `).join('');
+  };
+
+  // Filter functionality
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.nft-card').forEach(card => {
+        card.style.display = (filter === 'all' || card.dataset.epoch === filter) ? '' : 'none';
+      });
+    });
+  });
+
+  document.addEventListener('DOMContentLoaded', renderCodex);
+</script>
+</body>
+</html>

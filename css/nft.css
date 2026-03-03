@@ -1,0 +1,244 @@
+/* ── SECTION WRAPPER ── */
+#nft {
+  background: var(--bg-2);
+  border-top: 1px solid rgba(200, 134, 10, 0.1);
+  border-bottom: 1px solid rgba(200, 134, 10, 0.1);
+}
+
+/* ── HEADER ROW ── */
+.nft-header-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 3.5rem;
+}
+
+/* ── HOVER HINT ── */
+.nft-hint {
+  font-size: 0.7rem;
+  color: var(--bone-dim);
+  letter-spacing: 0.15em;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  animation: hint-pulse 2.5s ease infinite;
+  text-transform: uppercase;
+}
+
+.nft-hint::before {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  border: 1px solid var(--amber-glow);
+  border-radius: 50%;
+  animation: hint-pulse 2.5s ease infinite;
+}
+
+/* ── NFT GRID ── */
+.nft-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+}
+
+/* ── NFT CARD ── */
+.nft-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(200, 134, 10, 0.18);
+  position: relative;
+  overflow: hidden;
+  clip-path: var(--clip-card);
+  transition: border-color 0.4s, transform 0.4s, box-shadow 0.4s;
+  cursor: pointer;
+}
+
+.nft-card:hover {
+  border-color: var(--amber-glow);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-card), 0 0 0 1px rgba(255,159,28,0.25), 0 0 50px rgba(200,134,10,0.08);
+}
+
+/* ── CARD VISUAL AREA ── */
+.card-visual {
+  height: 200px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: radial-gradient(ellipse at center, rgba(200,134,10,0.04), transparent 70%);
+}
+
+/* ── CREATURE SVG SILHOUETTE ── */
+.creature-silhouette {
+  width: 130px;
+  height: 130px;
+  position: relative;
+  z-index: 1;
+  transition: all 0.5s ease;
+  filter: drop-shadow(0 0 8px rgba(200,134,10,0.15));
+}
+
+.nft-card:hover .creature-silhouette {
+  opacity: 0.1;
+  transform: scale(1.1);
+  filter: drop-shadow(0 0 20px rgba(255,159,28,0.4)) blur(3px);
+}
+
+/* ── REVEAL OVERLAY ── */
+.card-reveal {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  background: radial-gradient(ellipse at center, rgba(255,159,28,0.07), transparent);
+  z-index: 2;
+}
+
+.nft-card:hover .card-reveal {
+  opacity: 1;
+}
+
+.reveal-signal {
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  color: var(--green);
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 2;
+}
+
+.reveal-cta {
+  font-family: var(--font-title);
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  color: var(--amber-light);
+  border: 1px solid rgba(255,159,28,0.4);
+  padding: 0.35rem 0.9rem;
+  text-transform: uppercase;
+  margin-top: 0.4rem;
+  clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  background: rgba(255,159,28,0.06);
+  transition: background var(--transition-fast);
+}
+
+.reveal-cta:hover {
+  background: rgba(255,159,28,0.12);
+}
+
+/* ── SCAN LINE EFFECT ── */
+.card-scan {
+  position: absolute;
+  left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(255,159,28,0.6), transparent);
+  opacity: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.nft-card:hover .card-scan {
+  animation: card-scan-anim 1.5s linear infinite;
+  opacity: 1;
+}
+
+/* ── STATUS BADGE ── */
+.card-status {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  font-size: var(--text-xs);
+  letter-spacing: 0.2em;
+  color: var(--green);
+  background: rgba(26,255,140,0.07);
+  border: 1px solid rgba(26,255,140,0.2);
+  padding: 0.18rem 0.5rem;
+  z-index: 4;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.status-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: blink 1.5s ease infinite;
+}
+
+/* ── CARD INFO AREA ── */
+.card-info {
+  padding: 1.1rem 1.3rem 1.4rem;
+  border-top: 1px solid rgba(200,134,10,0.12);
+}
+
+.card-epoch {
+  font-size: 0.58rem;
+  letter-spacing: 0.28em;
+  color: var(--amber-glow);
+  text-transform: uppercase;
+  margin-bottom: 0.35rem;
+}
+
+.card-name {
+  font-family: var(--font-title);
+  font-size: 1.05rem;
+  color: var(--bone);
+  margin-bottom: 0.8rem;
+  line-height: 1.2;
+}
+
+/* ── FOOTER NOTE ── */
+.nft-footer-note {
+  text-align: center;
+  margin-top: 2.8rem;
+  font-size: 0.72rem;
+  color: var(--bone-dim);
+  letter-spacing: 0.18em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.nft-footer-note::before,
+.nft-footer-note::after {
+  content: '';
+  display: block;
+  flex: 1;
+  max-width: 80px;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── CODEX CTA ── */
+.nft-codex-cta {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .nft-hint { display: none; }
+}
+
+@media (max-width: 600px) {
+  .nft-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .nft-header-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

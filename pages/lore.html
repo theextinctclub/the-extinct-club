@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="$EXTINCT Lore Document — The full narrative canon of Project Lazarus, Ghost DNA, and the Resurrection Economy.">
+  <title>Lore Document — $EXTINCT | The Extinct Club</title>
+  <link rel="icon" type="image/x-icon" href="../assets/images/favicon.ico">
+  <link rel="icon" type="image/svg+xml" href="../assets/images/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="192x192" href="../assets/images/favicon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&family=Cinzel:wght@400;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/navbar.css">
+  <style>
+    /* ── PAGE LAYOUT ── */
+    .lore-page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: calc(var(--nav-height) + 5rem) 2rem 8rem;
+    }
+
+    /* ── HEADER ── */
+    .lore-header {
+      margin-bottom: 4rem;
+      padding-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .lore-eyebrow {
+      font-size: var(--text-xs);
+      letter-spacing: 0.45em;
+      color: var(--green);
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .lore-eyebrow::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1px;
+      background: var(--green);
+    }
+
+    .lore-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      color: var(--amber-light);
+      text-shadow: var(--glow-amber);
+      margin-bottom: 0.75rem;
+      line-height: 1.1;
+    }
+
+    .lore-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .lore-meta-item {
+      font-size: var(--text-xs);
+      letter-spacing: 0.2em;
+      color: var(--bone-dim);
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .lore-meta-item span {
+      color: var(--amber-glow);
+    }
+
+    /* ── CONFIDENTIAL BANNER ── */
+    .lore-confidential {
+      background: rgba(200,134,10,0.05);
+      border: 1px solid rgba(200,134,10,0.25);
+      padding: 0.85rem 1.4rem;
+      margin-bottom: 3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    }
+
+    .conf-icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      color: var(--amber-glow);
+    }
+
+    .lore-confidential p {
+      font-size: var(--text-xs);
+      letter-spacing: 0.15em;
+      color: var(--bone-dim);
+      text-transform: uppercase;
+      margin: 0;
+    }
+
+    /* ── SECTION STYLES ── */
+    .lore-section {
+      margin-bottom: 4rem;
+    }
+
+    .lore-section-num {
+      font-size: var(--text-xs);
+      letter-spacing: 0.4em;
+      color: var(--amber-glow);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .lore-section h2 {
+      font-family: var(--font-title);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--bone);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(200,134,10,0.12);
+    }
+
+    .lore-section h2 em {
+      font-style: normal;
+      color: var(--amber-light);
+    }
+
+    .lore-section h3 {
+      font-family: var(--font-title);
+      font-size: var(--text-lg);
+      color: var(--amber-glow);
+      margin: 2rem 0 0.75rem;
+    }
+
+    .lore-section p {
+      font-size: var(--text-base);
+      color: var(--bone-dim);
+      line-height: 2;
+      margin-bottom: 1.2rem;
+    }
+
+    /* ── PULLQUOTE ── */
+    .lore-quote {
+      border-left: 2px solid var(--amber-glow);
+      padding: 1rem 1.5rem;
+      margin: 2rem 0;
+      background: rgba(200,134,10,0.04);
+    }
+
+    .lore-quote p {
+      font-style: italic;
+      color: var(--bone-faint);
+      font-size: var(--text-base);
+      margin: 0;
+      line-height: 1.9;
+    }
+
+    /* ── TIER TABLE ── */
+    .lore-table-wrap {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      border: 1px solid var(--border);
+    }
+
+    .lore-table {
+      width: 100%;
+      min-width: 520px;
+      border-collapse: collapse;
+    }
+
+    .lore-table th {
+      font-size: var(--text-xs);
+      letter-spacing: 0.25em;
+      color: var(--bone-dim);
+      text-transform: uppercase;
+      padding: 0.8rem 1.2rem;
+      background: rgba(200,134,10,0.07);
+      border-bottom: 1px solid var(--border);
+      text-align: left;
+    }
+
+    .lore-table td {
+      padding: 0.8rem 1.2rem;
+      font-size: var(--text-sm);
+      color: var(--text);
+      border-bottom: 1px solid rgba(200,134,10,0.06);
+      vertical-align: middle;
+    }
+
+    .lore-table tr:last-child td { border-bottom: none; }
+
+    .lore-table td:nth-child(2) {
+      font-family: var(--font-mono);
+      color: var(--amber-glow);
+    }
+
+    .lore-table td:nth-child(3) {
+      color: var(--green);
+      font-family: var(--font-title);
+    }
+
+    /* ── SIGNAL BULLETS ── */
+    .signal-list {
+      margin: 1rem 0 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .signal-list li {
+      font-size: var(--text-base);
+      color: var(--bone-dim);
+      line-height: 1.85;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+
+    .signal-list li::before {
+      content: '▸';
+      color: var(--amber-glow);
+      flex-shrink: 0;
+      margin-top: 0.15rem;
+    }
+
+    /* ── PHASE BOXES ── */
+    .phase-row {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 0 1.5rem;
+      padding: 1.5rem;
+      border: 1px solid var(--border-subtle);
+      margin-bottom: 0.75rem;
+      position: relative;
+      transition: border-color var(--transition-fast);
+    }
+
+    .phase-row:hover {
+      border-color: rgba(200,134,10,0.3);
+    }
+
+    .phase-row.active {
+      border-color: rgba(255,159,28,0.4);
+      background: rgba(255,159,28,0.03);
+    }
+
+    .phase-tag {
+      font-family: var(--font-display);
+      font-size: var(--text-xs);
+      color: var(--amber-glow);
+      letter-spacing: 0.25em;
+      padding-top: 0.15rem;
+    }
+
+    .phase-row-title {
+      font-family: var(--font-title);
+      font-size: var(--text-md);
+      color: var(--bone);
+      margin-bottom: 0.4rem;
+    }
+
+    .phase-row-desc {
+      font-size: var(--text-sm);
+      color: var(--bone-dim);
+      line-height: 1.85;
+      margin: 0;
+    }
+
+    /* ── FINAL MESSAGE ── */
+    .lore-finale {
+      margin-top: 4rem;
+      padding: 3rem 2.5rem;
+      background: rgba(200,134,10,0.04);
+      border: 1px solid rgba(200,134,10,0.2);
+      text-align: center;
+      clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+    }
+
+    .lore-finale p {
+      font-style: italic;
+      color: var(--bone-faint);
+      line-height: 2;
+      margin-bottom: 0.75rem;
+      font-size: var(--text-base);
+    }
+
+    .lore-finale .finale-cta {
+      font-family: var(--font-display);
+      font-size: clamp(1.4rem, 3vw, 2rem);
+      color: var(--amber-light);
+      text-shadow: var(--glow-amber);
+      margin-top: 1.5rem;
+      display: block;
+    }
+
+    /* ── DISCLAIMER BOX ── */
+    .lore-disclaimer {
+      margin-top: 5rem;
+      padding: 1.5rem 2rem;
+      border: 1px solid rgba(138,122,98,0.15);
+      background: rgba(4,13,10,0.5);
+    }
+
+    .lore-disclaimer p {
+      font-size: 0.68rem;
+      color: rgba(138,122,98,0.4);
+      line-height: 1.85;
+      margin: 0;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── BACK LINK ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-title);
+      font-size: var(--text-xs);
+      letter-spacing: 0.2em;
+      color: var(--bone-dim);
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+      transition: color var(--transition-fast);
+      text-decoration: none;
+    }
+    .back-link:hover { color: var(--amber-light); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .lore-page { padding: calc(var(--nav-height) + 3rem) 1.25rem 5rem; }
+      .phase-row { grid-template-columns: 1fr; gap: 0.25rem; }
+      .lore-table-wrap { font-size: 0.8rem; }
+    }
+  
+    /* Custom cursor */
+    body { cursor: none; }
+    #customCursor { position:fixed;top:0;left:0;width:20px;height:20px;pointer-events:none;z-index:99999;transform:translate(-50%,-50%);transition:opacity 0.2s ease; }
+    #customCursor .cursor-ring { position:absolute;inset:0;border:1.5px solid rgba(255,159,28,0.7);border-radius:50%;animation:cur-pulse 2s ease infinite; }
+    #customCursor .cursor-dot { position:absolute;top:50%;left:50%;width:4px;height:4px;background:#ff9f1c;border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 6px #ff9f1c; }
+    @keyframes cur-pulse { 0%,100%{opacity:.7;transform:scale(1)} 50%{opacity:1;transform:scale(1.15)} }
+    a, button { cursor: none; }
+  </style>
+</head>
+<body>
+<div id="customCursor"><div class="cursor-ring"></div><div class="cursor-dot"></div></div>
+<script>
+  (function(){
+    var cur=document.getElementById('customCursor');
+    document.addEventListener('mousemove',function(e){cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';});
+    document.addEventListener('mouseleave',function(){cur.style.opacity='0';});
+    document.addEventListener('mouseenter',function(){cur.style.opacity='1';});
+  })();
+</script>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a href="../index.html" class="nav-logo">$EXTINCT</a>
+    <ul class="nav-links">
+      <li><a href="../index.html#lore">The Signal</a></li>
+      <li><a href="../index.html#nft">Species</a></li>
+      <li><a href="../index.html#lab">DNA Lab</a></li>
+      <li><a href="../index.html#hierarchy">Revivalists</a></li>
+      <li><a href="../index.html#roadmap">Phases</a></li>
+    </ul>
+    <a href="../index.html#cta" class="nav-cta">Join the Lab</a>
+    <button class="nav-hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="nav-mobile" id="mobileMenu">
+  <a href="../index.html#lore"      onclick="closeMobile()">The Signal</a>
+  <a href="../index.html#nft"       onclick="closeMobile()">Species Codex</a>
+  <a href="../index.html#lab"       onclick="closeMobile()">DNA Lab</a>
+  <a href="../index.html#hierarchy" onclick="closeMobile()">Revivalists</a>
+  <a href="../index.html#roadmap"   onclick="closeMobile()">Phases</a>
+  <a href="../index.html#cta" class="mobile-cta" onclick="closeMobile()">⬡ Join the Lab</a>
+</div>
+
+<!-- PAGE CONTENT -->
+<div class="lore-page">
+
+  <a href="../index.html" class="back-link">
+    <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M9 2 L4 7 L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Back to Home
+  </a>
+
+  <!-- HEADER -->
+  <div class="lore-header">
+    <div class="lore-eyebrow">Narrative Canon</div>
+    <h1>$EXTINCT</h1>
+    <p style="font-family:var(--font-title);font-size:1.1rem;color:var(--bone-dim);letter-spacing:0.1em;font-style:italic;margin:0.25rem 0 0;">They Were Gone. Now They Return.</p>
+    <div class="lore-meta">
+      <div class="lore-meta-item">Document: <span>Phase 0 Lore Canon v2.0</span></div>
+      <div class="lore-meta-item">Status: <span>Confidential</span></div>
+      <div class="lore-meta-item">For: <span>Ecosystem Participants Only</span></div>
+    </div>
+  </div>
+
+  <!-- CONFIDENTIAL NOTICE -->
+  <div class="lore-confidential">
+    <svg class="conf-icon" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+      <path d="M10 2 L3 6 L3 10 C3 14.4 6 18.2 10 19 C14 18.2 17 14.4 17 10 L17 6 Z" stroke="currentColor" stroke-width="1.3" fill="rgba(255,159,28,0.06)"/>
+      <path d="M10 8 L10 11 M10 13 L10 13.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+    <p>Confidential — For Ecosystem Participants Only · Not Financial Advice · Not an Investment Solicitation</p>
+  </div>
+
+
+  <!-- SECTION I — EXTINCTION PROTOCOL -->
+  <div class="lore-section reveal">
+    <div class="lore-section-num">Section I</div>
+    <h2>The <em>Extinction Protocol</em></h2>
+
+    <div class="lore-quote">
+      <p>"Extinction is not an end. It is a compression. A silence waiting to be broken by the right frequency."</p>
+    </div>
+
+    <p>For 66 million years, the planet has been burying its greatest experiments. The Woolly Mammoth. The Dodo. The Thylacine. The Passenger Pigeon. Each species — a universe of genetic intelligence, erased not because it failed, but because the world changed faster than biology could adapt.</p>
+
+    <p>But what if extinction was never permanent? What if every lost species left behind a signal — a biological memory, encoded in the very fossils, amber, and ice cores we pull from the earth — waiting for a technology sophisticated enough to read it?</p>
+
+    <p>That technology is here. That ledger is the blockchain. And the signal... is $EXTINCT.</p>
+  </div>
+
+
+  <!-- SECTION II — PROJECT LAZARUS -->
+  <div class="lore-section reveal">
+    <div class="lore-section-num">Section II</div>
+    <h2>The Origin — <em>Project Lazarus</em></h2>
+
+    <h3>2.1 The Discovery</h3>
+    <p>In 2019, a classified consortium of geneticists, cryptographers, and blockchain engineers — operating under the codename Project Lazarus — made a breakthrough that rewrote what we understood about biological data storage.</p>
+    <p>DNA, they discovered, is not just a blueprint for a living organism. It is a compressed archive. Every species that ever lived left behind what scientists began calling <strong style="color:var(--bone);">Ghost DNA</strong> — fragmented, dormant sequences scattered across living organisms, sediment layers, and ancient specimens.</p>
+    <p>The problem was always reconstruction. Ghost DNA is incomplete. Corrupted by time. Useless — unless you had an error-correction framework powerful enough, and a community distributed enough, to collaboratively rebuild it. The solution was not a laboratory. It was a blockchain.</p>
+
+    <h3>2.2 The Breakthrough</h3>
+    <p>Project Lazarus encoded the Ghost DNA fragments of 888 extinct species as cryptographic data layers — what they termed <strong style="color:var(--bone);">DNA Shards</strong>. Each Shard is a partial genetic sequence, mathematically unique, verifiably authentic, and immutable.</p>
+    <p>Alone, a Shard means nothing. It is a fragment. An echo. But combined — unlocked in sequence, with the right token, by the right holders — the Shards assemble into something extraordinary: a complete Digital Species Profile. A living NFT. A creature, returned. The fuel that powers the reconstruction engine is $EXTINCT.</p>
+  </div>
+
+
+  <!-- SECTION III — TOKEN -->
+  <div class="lore-section reveal">
+    <div class="lore-section-num">Section III</div>
+    <h2>$EXTINCT — <em>The Resurrection Fuel</em></h2>
+
+    <div class="lore-quote">
+      <p>"Every token burned is a heartbeat restored. Every transaction is a step out of darkness."</p>
+    </div>
+
+    <p>$EXTINCT is not merely a currency. It is the metabolic energy of the ecosystem — the biochemical catalyst without which no species can return from the void. In the lore of the $EXTINCT universe, tokens represent units of <strong style="color:var(--bone);">Lazarus Energy</strong> — a synthesized biological signal derived from the Ghost DNA discovery. Scientists within the narrative measure it in LZR (Lazarus Units).</p>
+    <p>Holders of $EXTINCT are not investors. They are <strong style="color:var(--amber-light);">Revivalists</strong>. And every token they carry makes the return of another species more possible.</p>
+
+    <h3>3.1 Launch — Pump.fun</h3>
+    <p>$EXTINCT launches exclusively on Pump.fun — the most trusted and organic meme coin launchpad in Web3. No presale. No VC allocation. No insider advantage. The launch is fair, open, and community-driven from the very first transaction.</p>
+
+    <h3>3.2 The Resurrection Economy</h3>
+    <p>The ecosystem operates on what Project Lazarus calls the <strong style="color:var(--bone);">Resurrection Economy</strong>. Three forces govern it:</p>
+    <ul class="signal-list">
+      <li><strong style="color:var(--amber-light);">SIGNAL:</strong> $EXTINCT tokens circulate freely, traded and accumulated by Revivalists across the chain. The more $EXTINCT flows, the stronger the collective signal becomes.</li>
+      <li><strong style="color:var(--amber-light);">UNLOCK:</strong> DNA Shards are sealed behind $EXTINCT locks. Spending tokens is the act of amplifying the signal enough to unseal a dormant sequence. This is not buying an NFT. It is performing a resurrection.</li>
+      <li><strong style="color:var(--amber-light);">BURN:</strong> A portion of every unlock burns $EXTINCT permanently. This burn is the energy cost of molecular reconstruction — the price paid to restore what was lost. It is irreversible, as all great resurrections are.</li>
+    </ul>
+
+    <h3>3.3 The Revivalist Hierarchy</h3>
+    <p>$EXTINCT holders occupy a living taxonomy — a social hierarchy modeled on ecological relationships. Your tier is determined by how many $EXTINCT tokens you hold at the time of the Genesis Snapshot. A minimum 7-day holding period applies before snapshot.</p>
+
+    <div class="lore-table-wrap">
+      <table class="lore-table">
+        <thead>
+          <tr>
+            <th>Tier</th>
+            <th>Holding Required</th>
+            <th>NFT Discount</th>
+            <th>Special Access</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Seed Holder</td>
+            <td>0 — 10K</td>
+            <td style="color:var(--bone-dim);">—</td>
+            <td>Signal access, faint species awareness</td>
+          </tr>
+          <tr>
+            <td>Tracker</td>
+            <td>10K — 100K</td>
+            <td>20% OFF</td>
+            <td>DNA Shards respond, early lore drops</td>
+          </tr>
+          <tr>
+            <td>Archivist</td>
+            <td>100K — 500K</td>
+            <td>35% OFF</td>
+            <td>Governance voting rights activated</td>
+          </tr>
+          <tr>
+            <td>Resurrector</td>
+            <td>500K — 2M</td>
+            <td>50% OFF</td>
+            <td>Full unlock access, Lab priority</td>
+          </tr>
+          <tr>
+            <td style="color:var(--amber-light);font-family:var(--font-title);">Genesis Keeper</td>
+            <td style="color:var(--amber-light);">2M+</td>
+            <td style="color:var(--amber-light);font-size:1.1rem;">60% OFF</td>
+            <td style="color:var(--bone);">Exclusive species, first reveal, Lazarus Council, treasury governance</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <!-- SECTION IV — NFT COLLECTION -->
+  <div class="lore-section reveal">
+    <div class="lore-section-num">Section IV</div>
+    <h2>The NFT Collection — <em>Species Reborn</em></h2>
+
+    <div class="lore-quote">
+      <p>"Each NFT is not art. It is archaeology made alive. A creature that chose you."</p>
+    </div>
+
+    <p>The $EXTINCT NFT collection is the heart of the ecosystem — 8,888 digital species profiles, each representing a unique extinct creature reconstructed from Ghost DNA. These are not illustrations of dead animals. They are living digital entities with personalities, traits, evolutionary histories, and active roles in the DNA Lab ecosystem.</p>
+
+    <h3>4.1 The Dormant Shard Reveal</h3>
+    <p>Every $EXTINCT NFT begins its life as a <strong style="color:var(--bone);">Dormant Shard</strong> — a fragmented silhouette. Incomplete. Waiting. The species is still trapped in its Ghost DNA state. As the holder uses $EXTINCT tokens in the DNA Lab to unlock layers, the creature's form becomes clearer, more vivid, more alive. No two awakenings are identical.</p>
+
+    <h3>4.2 The Species Codex — Five Extinction Epochs</h3>
+    <ul class="signal-list">
+      <li><strong style="color:var(--amber-light);">Epoch I — The Ancient (Paleozoic):</strong> Trilobites, Dunkleosteus, Anomalocaris, giant sea scorpions. The oldest signals. The hardest to reconstruct. The most powerful.</li>
+      <li><strong style="color:var(--amber-light);">Epoch II — The Great Dying (Permian-Triassic):</strong> Gorgonopsids, Lystrosaurus, proto-mammals that nearly didn't survive. Rare. Fierce. Coveted.</li>
+      <li><strong style="color:var(--amber-light);">Epoch III — The Giants (Mesozoic):</strong> Spinosaurus, Therizinosaurus, Deinocheirus. The overlooked legends — not the dinosaurs you expect.</li>
+      <li><strong style="color:var(--amber-light);">Epoch IV — The Ice Age (Pleistocene):</strong> Woolly Mammoths, Cave Lions, Short-faced Bears, Saber-tooths. The most emotionally resonant.</li>
+      <li><strong style="color:var(--amber-light);">Epoch V — The Recent Lost (Holocene):</strong> The Dodo. The Thylacine. The Passenger Pigeon. The Baiji River Dolphin. Gone within human memory. The most haunting.</li>
+    </ul>
+
+    <h3>4.3 DNA Trait Architecture</h3>
+    <ul class="signal-list">
+      <li><strong style="color:var(--bone);">Base Genome:</strong> The species' core identity — epoch, classification, physical form.</li>
+      <li><strong style="color:var(--bone);">Adaptive Traits:</strong> Environmental mutations generated at resurrection. Each trait is a blockchain-verifiable unique roll.</li>
+      <li><strong style="color:var(--bone);">Ghost Sequences:</strong> Ultra-rare hidden traits in 3% of all NFTs. Indicates a dormant gene from a second species.</li>
+      <li><strong style="color:var(--bone);">Awakening State:</strong> Visual progression from Dormant Shard to fully revealed living species — unlocked through DNA Lab activity.</li>
+    </ul>
+
+    <h3>4.4 The Bond Protocol</h3>
+    <p>In the $EXTINCT universe, every NFT species does not merely belong to a holder. It <strong style="color:var(--bone);">bonds</strong> with them. The longer a holder keeps a species NFT, the stronger the bond becomes. Bonded species provide enhanced DNA Lab performance, exclusive lore drops, and increased Lazarus Signal output for governance events.</p>
+    <p>A species sold at low bond strength loses its bond history. A species that reaches Maximum Bond state becomes permanently flagged as a <strong style="color:var(--amber-light);">Bonded Legacy</strong> — visible on-chain, coveted on secondary markets. Do not abandon what you brought back.</p>
+  </div>
+
+
+  <!-- SECTION V — DNA LAB -->
+  <div class="lore-section reveal">
+    <div class="lore-section-num">Section V</div>
+    <h2>The DNA Lab — <em>Resurrection Engine</em></h2>
+
+    <div class="lore-quote">
+      <p>"The chain is the lab. The players are the scientists. The world you build determines what survives."</p>
+    </div>
+
+    <p>The DNA Lab is the core gameplay engine of $EXTINCT — a strategic, on-chain research facility where holders deploy their NFT species and $EXTINCT tokens to unlock evolution, breed hybrids, and compete for dominance in a living digital biosphere.</p>
+
+    <h3>5.1 Lab Mechanics</h3>
+    <ul class="signal-list">
+      <li><strong style="color:var(--bone);">Experiment System:</strong> Spend $EXTINCT to unlock new Adaptive Traits, reveal hidden Ghost Sequences, or strengthen your species' Awakening State. Results are on-chain, permanent, and unique.</li>
+      <li><strong style="color:var(--bone);">Lab Upgrade System:</strong> Upgrade your Lab facility by spending $EXTINCT. Higher Lab levels unlock faster research speed, better outcomes, and access to rare species tiers.</li>
+      <li><strong style="color:var(--bone);">Hybrid Minting — Triple Lock:</strong> Combine two Rare+ NFTs to create a Hybrid with a unique DNA profile. Protected by: Rarity Lock + 30-day Dormancy Lock + Supply Lock (888 Hybrids max, ever).</li>
+      <li><strong style="color:var(--bone);">Missions & Quests:</strong> Species-exclusive missions only available to their holders. Complete missions to earn $EXTINCT rewards and exclusive trait unlocks.</li>
+    </ul>
+
+    <h3>5.2 The Earn/Burn Economy</h3>
+    <p>$EXTINCT is both earned through gameplay and burned through Lab actions. A dynamic burn rate automatically increases if token price falls below threshold — a built-in economic safety valve. Weekly earn caps prevent whale farming and protect token supply.</p>
+
+    <h3>5.3 The Great Extinction Events</h3>
+    <p>Three times per year, a server-wide catastrophe triggers a Great Extinction Event. The entire community must collectively spend $EXTINCT to stabilize the ecosystem before the timer expires.</p>
+    <ul class="signal-list">
+      <li><strong style="color:var(--green);">If the community succeeds:</strong> All active species gain a permanent trait upgrade. A legendary new Species is unlocked for top contributors.</li>
+      <li><strong style="color:#e05555;">If the community fails:</strong> The weakest species suffer mass Dormancy. A Ghost Sequence is lost forever — its data burned from the chain.</li>
+    </ul>
+  </div>
+
+
+  <!-- SECTION VI — TRINITY -->
+  <div class="lore-section reveal">
+    <div class="lore-section-num">Section VI</div>
+    <h2>The Trinity — <em>Token, NFT, Lab</em></h2>
+
+    <p>What separates $EXTINCT from every other Web3 project is not any single element. It is the architecture of interdependence between all three pillars. The token needs the NFT to have meaning. The NFT needs the Lab to have purpose. The Lab needs the token to sustain. Remove any one pillar and the ecosystem collapses. Keep all three alive — and something extraordinary emerges: an economy that breathes.</p>
+  </div>
+
+
+  <!-- SECTION VII — COMMUNITY -->
+  <div class="lore-section reveal">
+    <div class="lore-section-num">Section VII</div>
+    <h2>The <em>Revivalist Community</em></h2>
+
+    <div class="lore-quote">
+      <p>"Extinction happened in silence. Resurrection happens together."</p>
+    </div>
+
+    <p>$EXTINCT is not a project built for holders. It is built by Revivalists — a community that understands that the greatest things humans have lost were lost because no one coordinated in time to save them.</p>
+    <p>The $EXTINCT community is organized around the <strong style="color:var(--amber-light);">Lazarus Council</strong> — a governance structure in which Archivists, Resurrectors, and Genesis Keepers vote on critical ecosystem decisions: which species unlock next, how to respond to Extinction Events, how the treasury is deployed.</p>
+    <p>Community lore-writing is canon. Holders who contribute verified species lore — scientific backstories, extinction narratives, cultural significance — can submit to the Codex Archive. Approved entries become official $EXTINCT universe content, permanently attached to that species' on-chain metadata. The community writes the world it wants to revive.</p>
+  </div>
+
+
+  <!-- SECTION VIII — ROADMAP -->
+  <div class="lore-section reveal">
+    <div class="lore-section-num">Section VIII</div>
+    <h2>Phase <em>Roadmap</em></h2>
+
+    <p>Every phase delivers before the next begins. No phase is announced without proof of progress.</p>
+
+    <div class="phase-row active">
+      <div class="phase-tag">Phase 0</div>
+      <div>
+        <div class="phase-row-title">Narrative</div>
+        <p class="phase-row-desc">The world is built in language before it is built in code. Lore Canon, Species Codex, visual identity, and community origin story established. NFT art previews prepared. The signal begins here.</p>
+      </div>
+    </div>
+
+    <div class="phase-row">
+      <div class="phase-tag">Phase 1</div>
+      <div>
+        <div class="phase-row-title">Token Launch</div>
+        <p class="phase-row-desc">$EXTINCT launches on Pump.fun. Fair launch — no presale, no VC. The Revivalist community forms. Genesis NFT whitelist snapshot is scheduled. Early holders receive Founder status.</p>
+      </div>
+    </div>
+
+    <div class="phase-row">
+      <div class="phase-tag">Phase 2</div>
+      <div>
+        <div class="phase-row-title">NFT Drop</div>
+        <p class="phase-row-desc">The first 888 species resurrect as Dormant Shards. Genesis Collection opens — Epoch V species first. Tier-based discounts activate. Bond Protocol goes live. The Codex opens to community contributions.</p>
+      </div>
+    </div>
+
+    <div class="phase-row">
+      <div class="phase-tag">Phase 3</div>
+      <div>
+        <div class="phase-row-title">DNA Lab</div>
+        <p class="phase-row-desc">The Lab launches. All three pillars connect. Experiments begin. The first Hybrid minting window opens. The first Great Extinction Event is scheduled. The loop is complete. The world is alive.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- FINALE -->
+  <div class="lore-finale reveal">
+    <p>"We did not lose the Mammoth because we hated it. We lost it because we were not paying attention. We were not organized. We did not have the tools to care, collectively, in time."</p>
+    <p>"We have the tools now."</p>
+    <p>$EXTINCT is not nostalgia. It is not sentiment. It is a demonstration that with the right network, the right incentives, and the right community — nothing needs to stay lost forever.</p>
+    <p>The chain does not forget. The signal does not die.</p>
+    <span class="finale-cta">They are waiting. Revive them.</span>
+  </div>
+
+
+  <!-- DISCLAIMER -->
+  <div class="lore-disclaimer">
+    <p>This document is a narrative lore and concept paper for the $EXTINCT ecosystem. It does not constitute financial advice, investment advice, or a solicitation to purchase any token or digital asset. $EXTINCT tokens and NFTs are not investment products. Participation in this ecosystem involves significant risk including total loss of funds. Cryptocurrency and NFT markets are highly volatile and largely unregulated. This document is for informational and entertainment purposes only. Always conduct your own research before making any financial decisions.</p>
+    <p style="margin-top:0.75rem;">$EXTINCT | Phase 0 Lore Document v2.0 | For Ecosystem Participants Only</p>
+  </div>
+
+</div><!-- /.lore-page -->
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">$EXTINCT</div>
+    <ul class="footer-links">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="codex.html">Species Codex</a></li>
+      <li><a href="disclaimer.html">Disclaimer</a></li>
+      <li><a href="https://twitter.com/theextinctclub" target="_blank" rel="noopener">Twitter / X</a></li>
+    </ul>
+    <p class="footer-disclaimer">$EXTINCT | The Extinct Club | Phase 0 Lore Document v2.0 | Not Financial Advice</p>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
