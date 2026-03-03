@@ -14,23 +14,7 @@ $EXTINCT is a three-pillar Web3 ecosystem built around the revival of extinct sp
 
 ## Links
 
-- Website: [extinctclub.io](https://extinctclub.io)
+- Website: [extinctclub.io](https://theextinctclub.com)
 - Twitter: [@theextinctclub](https://x.com/theextinctclub)
 - Telegram: [t.me/theextinctclub](https://t.me/theextinctclub)
-- Pump.fun: [pump.fun](https://pump.fun)
-
-## Setup
-
-Open `index.html` in any browser, or use VS Code Live Server for local development.
-
-## After Launch
-
-To update the contract address, open `js/countdown.js` and change:
-```js
-const CONTRACT_ADDRESS = 'TBA';
-```
-to your deployed contract address.
-
----
-
-*$EXTINCT | Phase 0 — Narrative*
+- Pump.fun: [pump.fun](https://pump.fun/TBA)
