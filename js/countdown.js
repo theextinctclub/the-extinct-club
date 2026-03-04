@@ -1,7 +1,7 @@
 'use strict';
 
 // Launch target — 04 March 2026, 3:00 PM UTC
-const LAUNCH_DATE = new Date('2026-03-04T15:10:00.000Z');
+const LAUNCH_DATE = new Date('2099-03-04T15:10:00.000Z');
 
 // Contract address — update this value after launch
 const CONTRACT_ADDRESS = 'TBA';
