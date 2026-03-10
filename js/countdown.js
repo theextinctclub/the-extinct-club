@@ -4,7 +4,7 @@
 const LAUNCH_DATE = new Date('2026-03-10T15:00:00.000Z');
 
 // Contract address
-const CONTRACT_ADDRESS = 'TBA';
+const CONTRACT_ADDRESS = 'BuScUqy2TEkcdq2jHe7z6ETbjEN4fziXwFccbEM4pump';
 
 const pad = (n) => String(Math.floor(n)).padStart(2, '0');
 
